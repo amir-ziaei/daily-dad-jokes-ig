@@ -1,0 +1,19 @@
+app = 'daily-dad-jokes-ig'
+primary_region = 'ams'
+kill_signal = 'SIGINT'
+kill_timeout = '5s'
+
+schedule = "daily"
+
+[[vm]]
+  cpu_kind = 'shared'
+  cpus = 1
+  memory_mb = 512
+
+[mounts]
+  source = "data"
+  destination = "/mnt"
+  processes = ["app"]
+
+[env]
+  AUTH_STATE_PATH = "/mnt/auth.json"

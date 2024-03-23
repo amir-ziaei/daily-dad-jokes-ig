@@ -1,0 +1,8 @@
+services:
+  app:
+    build: .
+    volumes:
+      - ./mnt:/mnt
+    env_file: .env
+    environment:
+      - AUTH_STATE_PATH=/mnt/auth.json
