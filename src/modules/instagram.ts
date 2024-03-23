@@ -12,7 +12,7 @@ export async function sendDirectToThread({
   threadId,
   authStatePath,
 }: SendDirectToThreadParams) {
-  const browser = await chromium.launch({ headless: false })
+  const browser = await chromium.launch({ headless: true })
   console.log('sendDirectToThread: Chromium launched')
   const context = await browser.newContext({
     storageState: authStatePath,
