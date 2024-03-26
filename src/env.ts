@@ -1,11 +1,12 @@
 import { z } from 'zod'
 
 const envVariables = z.object({
-  AUTH_TOKEN: z.string().min(256),
+  PORT: z.coerce.number().default(3000),
+  AUTH_TOKEN: z.string().min(128),
   IG_THREAD_ID: z.string(),
   IG_USERNAME: z.string(),
   IG_PASSWORD: z.string(),
-  AUTH_STATE_PATH: z.string().optional(),
+  PERSISTED_VOLUME_PATH: z.string().optional(),
 })
 
 declare global {

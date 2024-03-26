@@ -16,4 +16,4 @@ schedule = "daily"
   processes = ["app"]
 
 [env]
-  AUTH_STATE_PATH = "/mnt/auth.json"
+  PERSISTED_VOLUME_PATH = "/mnt"

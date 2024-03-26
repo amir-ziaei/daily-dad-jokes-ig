@@ -14,7 +14,7 @@ const HttpMethods = {
 type HttpMethods = keyof typeof HttpMethods
 
 type RoutePath = string
-type RouteHandler = (req: Request) => Response | Promise<Response>
+export type RouteHandler = (req: Request) => Response | Promise<Response>
 type ErrorHandler = (err: ErrorLike) => Response | Promise<Response>
 
 export class Router {
@@ -29,7 +29,11 @@ export class Router {
     TRACE: new Map<RoutePath, RouteHandler>(),
     PATCH: new Map<RoutePath, RouteHandler>(),
   }
-  #defaultHandler: RouteHandler | undefined
+  #defaultHandler: RouteHandler = () => {
+    return new Response('404', {
+      status: 404,
+    })
+  }
   #catchHandler: ErrorHandler | undefined
 
   get(path: RoutePath, handler: RouteHandler) {
@@ -63,10 +67,7 @@ export class Router {
     if (handler) {
       return handler(req)
     }
-    if (this.#defaultHandler) {
-      return this.#defaultHandler(req)
-    }
-    throw new Error('No route match')
+    return this.#defaultHandler(req)
   }
 
   handleError(err: ErrorLike) {
