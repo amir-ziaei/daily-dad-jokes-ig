@@ -1,5 +1,5 @@
-import { PersistedVolumeFilePath } from './../fs/persisted-volume-file-path'
 import { DiskFile } from '../fs/disk-file'
+import { PersistedVolumeFilePath } from './../fs/persisted-volume-file-path'
 
 export type RateLimiterConfiguration = {
   /** time window in ms */

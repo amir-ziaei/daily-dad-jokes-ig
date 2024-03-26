@@ -1,6 +1,6 @@
 import { DiskFile } from '../modules/fs/disk-file'
 import { PersistedVolumeFilePath } from '../modules/fs/persisted-volume-file-path'
-import type { RouteHandler } from '../modules/http/http-router'
+import  { type RouteHandler } from '../modules/http/http-router'
 import { sendDirectToThread } from '../services/instagram'
 import { getRandomDadJoke } from '../services/jokes'
 

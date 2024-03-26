@@ -37,13 +37,17 @@ export async function sendDirectToThread({
         .getByRole('button', { name: `Continue as ${process.env.IG_USERNAME}` })
         .click()
       console.log(`sendDirectToThread: Continued as ${process.env.IG_USERNAME}`)
-    } catch {}
+    } catch {
+      /** no need to handle */
+    }
     try {
       await page
         .getByRole('button', { name: 'Decline optional cookies' })
         .click()
       console.log('sendDirectToThread: Decline optional cookies')
-    } catch {}
+    } catch {
+      /** no need to handle */
+    }
     await page
       .getByLabel('Phone number, username, or')
       .fill(process.env.IG_USERNAME)
@@ -57,7 +61,9 @@ export async function sendDirectToThread({
       await expect(page.getByText('Turn on Notifications')).toBeVisible()
       await page.getByRole('button', { name: 'Not Now' }).click()
       console.log('sendDirectToThread: Turned off notifications')
-    } catch {}
+    } catch {
+      /** no need to handle */
+    }
     await context.storageState({ path: authStatePath })
     console.log('sendDirectToThread: Auth state saved')
   }

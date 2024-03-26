@@ -1,12 +1,12 @@
-import type { ErrorLike } from 'bun'
-import { Router } from './modules/http/http-router'
-import { RateLimiter, TooManyRequests } from './modules/http/http-rate-limiter'
+import  { type ErrorLike } from 'bun'
 import {
   UnauthorizedRequest,
   requireAuthentication,
 } from './modules/http/authentication'
-import * as jokesRoute from './routes/jokes'
+import { RateLimiter, TooManyRequests } from './modules/http/http-rate-limiter'
+import { Router } from './modules/http/http-router'
 import * as healthcheckRoute from './routes/healthcheck'
+import * as jokesRoute from './routes/jokes'
 
 export const router = new Router()
 
