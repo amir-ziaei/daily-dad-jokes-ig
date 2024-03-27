@@ -68,6 +68,10 @@ jobs:
 
       - name: 🎭 Playwright tests
         run: bunx playwright test
+        env:
+          AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
+          IG_USERNAME: ${{ secrets.IG_USERNAME }}
+          IG_PASSWORD: ${{ secrets.IG_PASSWORD }}
 
       - name: 📊 Upload report
         uses: actions/upload-artifact@v3
