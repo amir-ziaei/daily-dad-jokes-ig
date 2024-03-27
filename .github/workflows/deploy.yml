@@ -72,6 +72,7 @@ jobs:
           AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
           IG_USERNAME: ${{ secrets.IG_USERNAME }}
           IG_PASSWORD: ${{ secrets.IG_PASSWORD }}
+          IG_THREAD_ID: ${{ secrets.IG_THREAD_ID }}
 
       - name: 📊 Upload report
         uses: actions/upload-artifact@v3
