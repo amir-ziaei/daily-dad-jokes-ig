@@ -4,7 +4,7 @@
 .github
 .gitignore
 .idea
-README.md
+*.md
 Dockerfile
 Dockerfile.archive
 docker-compose.yml
@@ -22,3 +22,6 @@ playwright.config.ts
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+/trace
+.eslintrc.cjs
+*.zip
