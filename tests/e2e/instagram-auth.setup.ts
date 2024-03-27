@@ -4,10 +4,10 @@ const authFile = 'mnt/auth.json'
 
 setup('authenticate instagram', async ({ page }) => {
   await page.goto('https://www.instagram.com/')
-  await page
-    .getByRole('button', { name: 'Decline optional cookies' })
-    .click()
-    .catch(() => {})
+  // await page
+  //   .getByRole('button', { name: 'Decline optional cookies' })
+  //   .click()
+  //   .catch(() => {})
   await page
     .getByLabel('Phone number, username, or')
     .fill(process.env.IG_USERNAME)
