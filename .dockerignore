@@ -16,3 +16,9 @@ node_modules
 tsconfig.json
 fly.toml
 mnt
+playwright.config.ts
+/tests
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

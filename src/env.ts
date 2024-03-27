@@ -1,8 +1,8 @@
 import { z } from 'zod'
 
 const envVariables = z.object({
-  NODE_ENV: z.enum(['production', 'development'] as const),
-  PORT: z.coerce.number().default(3000),
+  PORT: z.string(),
+  CI: z.string().optional(),
   AUTH_TOKEN: z.string().min(128),
   IG_THREAD_ID: z.string(),
   IG_USERNAME: z.string(),

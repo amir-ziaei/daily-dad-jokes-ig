@@ -64,6 +64,7 @@ export async function sendDirectToThread({
     } catch {
       /** no need to handle */
     }
+    await expect(page.getByRole('link', { name: 'Home Home' })).toBeVisible()
     await context.storageState({ path: authStatePath })
     console.log('sendDirectToThread: Auth state saved')
   }
