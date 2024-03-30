@@ -1,6 +1,11 @@
 name: 🚀 Deploy Scheduler
 on:
-  workflow_call:
+  push:
+    branches:
+      - main
+    paths:
+      - 'apps/scheduler/**'
+  pull_request: {}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
