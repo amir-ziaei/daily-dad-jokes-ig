@@ -22,7 +22,7 @@ test.describe('POST /jokes', () => {
     expect(await req.text()).toMatch(/unauthorized/i)
   })
 
-  test('authorized', async ({ request, page }) => {
+  test('authenticated', async ({ request, page }) => {
     const req = await request.post('/jokes', {
       headers: { Authorization: process.env.AUTH_TOKEN },
     })

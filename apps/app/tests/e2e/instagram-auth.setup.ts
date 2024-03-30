@@ -15,12 +15,16 @@ setup('authenticate instagram', async ({ page }) => {
     .fill(process.env.IG_USERNAME)
   await page.getByLabel('Password').fill(process.env.IG_PASSWORD)
   await page.getByRole('button', { name: 'Log in', exact: true }).click()
+  await page.waitForLoadState('networkidle')
   if (await page.getByText('Save your login info?').isVisible()) {
     await page.getByRole('button', { name: 'Save info' }).click()
   }
+  await page.waitForLoadState('networkidle')
   if (await page.getByText('Turn on Notifications').isVisible()) {
     await page.getByRole('button', { name: 'Not Now' }).click()
   }
-  await expect(page.getByRole('link', { name: 'Home Home' })).toBeVisible()
+  await expect(page.getByRole('link', { name: 'Home Home' })).toBeVisible({
+    timeout: 10_000,
+  })
   await page.context().storageState({ path: authFile })
 })
