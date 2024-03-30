@@ -5,9 +5,14 @@ node_modules
 mnt
 .env
 
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
-/trace
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+trace
 *.zip
+
+# Wrangler
+.wrangler
+.dev.vars

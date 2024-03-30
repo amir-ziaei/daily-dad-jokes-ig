@@ -1,36 +1,16 @@
 {
-  "name": "daily-dad-jokes-ig",
-  "type": "module",
-  "module": "src/entry.ts",
+  "name": "daily-dad-jokes-ig-monorepo",
+  "private": true,
   "scripts": {
-    "dev": "bun --watch .",
-    "start": "bun .",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write .",
-    "typecheck": "tsc",
-    "auth:gen": "playwright codegen https://instagram.com --save-storage=mnt/auth.json",
-    "auth:verify": "playwright codegen https://instagram.com --load-storage=mnt/auth.json",
-    "deploy": "fly deploy --remote-only",
-    "test:e2e:dev": "playwright test --ui",
-    "test:e2e:run": "cross-env CI=true playwright test",
-    "test:e2e:install": "npx playwright install --with-deps chromium",
-    "validate": "run-p lint typecheck test:e2e:run"
+    "format": "prettier --write ."
   },
   "eslintIgnore": [
     "/node_modules",
-    "/build",
-    "/public/build",
-    "/playwright-report",
-    "/trace",
-    "/server-build"
+    "playwright-report",
+    "trace"
   ],
-  "dependencies": {
-    "@playwright/test": "^1.42.1",
-    "cheerio": "^1.0.0-rc.12",
-    "dotenv": "^16.4.5",
-    "zod": "^3.22.4"
-  },
   "devDependencies": {
     "@types/bun": "latest",
     "@typescript-eslint/eslint-plugin": "latest",
@@ -41,5 +21,8 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^3.2.5",
     "typescript": "^5.4.3"
-  }
+  },
+  "workspaces": [
+    "apps/*"
+  ]
 }
