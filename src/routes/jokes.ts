@@ -14,6 +14,7 @@ export const post: RouteHandler = async () => {
       message,
       threadId,
       authStatePath: await resolveAuthStatePath(),
+      failureTraceSavePath: new PersistedVolumeFilePath('trace.zip').fullPath(),
     })
     return Response.json({ message })
   } catch (error) {
