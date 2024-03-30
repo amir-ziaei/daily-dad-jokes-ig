@@ -37,25 +37,21 @@ export async function sendDirectToThread({
     const isAuthenticated = pageUrl === threadUrl
     console.log(`sendDirectToThread: Authentication status: ${isAuthenticated}`)
     if (!isAuthenticated) {
-      try {
-        await page
-          .getByRole('button', {
-            name: `Continue as ${process.env.IG_USERNAME}`,
-          })
-          .click()
+      const continueAs = page.getByRole('button', {
+        name: `Continue as ${process.env.IG_USERNAME}`,
+      })
+      if (await continueAs.isVisible()) {
+        await continueAs.click()
         console.log(
           `sendDirectToThread: Continued as ${process.env.IG_USERNAME}`,
         )
-      } catch {
-        /** no need to handle */
       }
-      try {
-        await page
-          .getByRole('button', { name: 'Decline optional cookies' })
-          .click()
-        console.log('sendDirectToThread: Decline optional cookies')
-      } catch {
-        /** no need to handle */
+      const declineCookies = page.getByRole('button', {
+        name: 'Decline optional cookies',
+      })
+      if (await declineCookies.isVisible()) {
+        await declineCookies.click()
+        console.log('sendDirectToThread: Declined optional cookies')
       }
       await page
         .getByLabel('Phone number, username, or')
@@ -66,12 +62,9 @@ export async function sendDirectToThread({
       console.log('sendDirectToThread: Logged in')
       await page.getByRole('button', { name: 'Save info' }).click()
       console.log('sendDirectToThread: Saved info')
-      try {
-        await expect(page.getByText('Turn on Notifications')).toBeVisible()
+      if (await page.getByText('Turn on Notifications').isVisible()) {
         await page.getByRole('button', { name: 'Not Now' }).click()
         console.log('sendDirectToThread: Turned off notifications')
-      } catch {
-        /** no need to handle */
       }
       await expect(page.getByRole('link', { name: 'Home Home' })).toBeVisible()
       await context.storageState({ path: authStatePath })
