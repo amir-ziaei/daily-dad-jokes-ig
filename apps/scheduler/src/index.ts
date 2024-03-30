@@ -5,11 +5,11 @@ export interface Env {
 
 export default {
   async scheduled(event: ScheduledEvent, env: Env): Promise<void> {
-    const response = await fetch(`${env.BASE_URL}/jokes`, {
+    const resp = await fetch(`${env.BASE_URL}/jokes`, {
       method: 'POST',
       headers: { Authorization: env.API_TOKEN },
     })
-    const wasSuccessful = response.ok ? 'success' : 'fail'
+    const wasSuccessful = resp.ok ? 'success' : 'fail'
     console.log(`trigger fired at ${event.cron}: ${wasSuccessful}`)
   },
 }
