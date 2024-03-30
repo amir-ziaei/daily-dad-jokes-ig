@@ -59,6 +59,7 @@ jobs:
 
       - name: 🏄 Copy test env vars
         run: cp .env.example .env
+        working-directory: apps/app
 
       - name: 🍞 Setup Bun
         uses: oven-sh/setup-bun@v1
