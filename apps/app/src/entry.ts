@@ -2,7 +2,7 @@ import './env'
 import { router } from './routes'
 
 const { port } = Bun.serve({
-  port: process.env.PORT || 3000,
+  port: process.env.PORT,
   development: process.env.NODE_ENV !== 'production',
   fetch(req) {
     return router.match(req)

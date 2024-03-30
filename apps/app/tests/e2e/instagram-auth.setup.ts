@@ -4,30 +4,22 @@ const authFile = 'mnt/auth.json'
 
 setup('authenticate instagram', async ({ page }) => {
   await page.goto('https://www.instagram.com/')
-  try {
-    await expect(page.getByText('Allow the use of cookies from')).toBeVisible()
-    await page.getByRole('button', { name: 'Decline optional cookies' }).click()
-  } catch {
-    /** no need to handle */
+  const declineCookies = page.getByRole('button', {
+    name: 'Decline optional cookies',
+  })
+  if (await declineCookies.isVisible()) {
+    await declineCookies.click()
   }
   await page
     .getByLabel('Phone number, username, or')
     .fill(process.env.IG_USERNAME)
   await page.getByLabel('Password').fill(process.env.IG_PASSWORD)
   await page.getByRole('button', { name: 'Log in', exact: true }).click()
-  try {
-    await expect(page.getByText('Save your login info?')).toBeVisible()
+  if (await page.getByText('Save your login info?').isVisible()) {
     await page.getByRole('button', { name: 'Save info' }).click()
-  } catch {
-    /** no need to handle */
   }
-  try {
-    await expect(page.getByText('Turn on Notifications')).toBeVisible({
-      timeout: 10_000,
-    })
+  if (await page.getByText('Turn on Notifications').isVisible()) {
     await page.getByRole('button', { name: 'Not Now' }).click()
-  } catch {
-    /** no need to handle */
   }
   await expect(page.getByRole('link', { name: 'Home Home' })).toBeVisible()
   await page.context().storageState({ path: authFile })
