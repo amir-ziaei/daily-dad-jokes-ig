@@ -103,6 +103,7 @@ jobs:
       - name: 🚀 Deploy
         if: ${{ github.ref == 'refs/heads/main' }}
         working-directory: apps/app
-        run: fly deploy --remote-only --build-arg COMMIT_SHA=${{ github.sha }}
+        run:
+          flyctl deploy --remote-only --build-arg COMMIT_SHA=${{ github.sha }}
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
