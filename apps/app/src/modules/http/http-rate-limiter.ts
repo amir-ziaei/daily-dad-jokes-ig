@@ -4,7 +4,7 @@ import { PersistedVolumeFilePath } from './../fs/persisted-volume-file-path'
 export type RateLimiterConfiguration = {
   /** time window in ms */
   timeWindow: number
-  /** how many requests are allow within `timeWindow` */
+  /** how many requests are allow within the `timeWindow` */
   reqPerTimeWindow: number
 }
 type ExpirationTimestamp = number
