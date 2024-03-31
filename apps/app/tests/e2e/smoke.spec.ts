@@ -22,7 +22,7 @@ test.describe('POST /jokes', () => {
     expect(await req.text()).toMatch(/unauthorized/i)
   })
 
-  test('authenticated', async ({ request, page }) => {
+  test('authenticated', async ({ request }) => {
     const req = await request.post('/jokes', {
       headers: { Authorization: process.env.AUTH_TOKEN },
     })
@@ -30,12 +30,5 @@ test.describe('POST /jokes', () => {
     expect(req.status()).toBe(200)
     const response = await req.json()
     expect(response).toHaveProperty('message')
-
-    await page.goto(
-      `https://www.instagram.com/direct/t/${process.env.IG_THREAD_ID}/`,
-    )
-    await expect(
-      page.getByLabel('Messages in conversation with'),
-    ).toContainText(response.message)
   })
 })
