@@ -4,8 +4,8 @@
   "type": "module",
   "module": "src/entry.ts",
   "scripts": {
-    "dev": "bun --watch .",
-    "start": "bun .",
+    "dev": "cross-env NODE_ENV=development bun --hot .",
+    "start": "cross-env NODE_ENV=production bun .",
     "deploy": "fly deploy --remote-only",
     "typecheck": "tsc",
     "test:e2e:dev": "playwright test --ui",

@@ -1,4 +1,4 @@
-import  { type ErrorLike } from 'bun'
+import { type ErrorLike } from 'bun'
 import {
   UnauthorizedRequest,
   requireAuthentication,
