@@ -3,8 +3,8 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'apps/app/**'
+    paths-ignore:
+      - 'apps/scheduler/**'
   pull_request: {}
 
 concurrency:
