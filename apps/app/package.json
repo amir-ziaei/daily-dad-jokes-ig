@@ -10,7 +10,7 @@
     "typecheck": "tsc",
     "test:e2e:dev": "playwright test --ui",
     "test:e2e:run": "cross-env CI=true playwright test",
-    "test:e2e:install": "npx playwright install --with-deps chromium"
+    "test:e2e:install": "playwright install --with-deps chromium"
   },
   "dependencies": {
     "@playwright/test": "^1.42.1",
